@@ -23,6 +23,9 @@ public class Proyecto {
         } else {
             configuracion = Banco.obtenerConfiguracion();
         }
+        
+        //File txt = new File("prod.txt");
+        
     }
     
     
