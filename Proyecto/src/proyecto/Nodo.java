@@ -20,6 +20,7 @@ public class Nodo {
     private String tramite;
     private char tipo; // nivel de prioridad A,B,C 
     private int prioridad; // Para manejar la prioridad en la cola
+    private Nodo siguiente; //Referencia al siguiente nodo en la cola
 
     public Nodo(String nombre, String id, int edad,  String tramite, char tipo) {
         this.nombre = nombre;
@@ -29,6 +30,7 @@ public class Nodo {
         this.horaAtencion = horaAtencion;
         this.tramite = tramite;
         this.tipo = tipo;
+        this.siguiente = null; 
     }
 
     public String getNombre() {
@@ -85,6 +87,14 @@ public class Nodo {
 
     public void setTipo(char tipo) {
         this.tipo = tipo;
+    }
+
+    public Nodo getSiguiente() {
+        return siguiente;
+    }
+
+    public void setSiguiente(Nodo siguiente) {
+        this.siguiente = siguiente;
     }
     
     public void setPrioridad(){
