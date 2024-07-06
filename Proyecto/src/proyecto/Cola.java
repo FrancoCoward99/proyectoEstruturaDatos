@@ -40,4 +40,8 @@ public class Cola {
             return cliente;
         }
     }
+    
+    public Nodo verCabeza() {
+        return cabeza;
+    }
 }
