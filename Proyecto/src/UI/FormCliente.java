@@ -1,3 +1,5 @@
+package UI;
+
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -51,7 +53,6 @@ public class FormCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        boxTipo.setForeground(new java.awt.Color(0, 0, 0));
         boxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "P: Preferencial", "A: Un solo trmite", "B: Dos o mas trmites" }));
         boxTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +72,6 @@ public class FormCliente extends javax.swing.JFrame {
             }
         });
 
-        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,10 +81,8 @@ public class FormCliente extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Registro de Cliente");
 
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,32 +91,26 @@ public class FormCliente extends javax.swing.JFrame {
         });
 
         lbNombre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbNombre.setForeground(new java.awt.Color(0, 0, 0));
         lbNombre.setText("Nombre:");
 
         lbId.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbId.setForeground(new java.awt.Color(0, 0, 0));
         lbId.setText("ID");
 
         resultComboTramite.setBackground(new java.awt.Color(255, 255, 255));
         resultComboTramite.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lbEdad.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbEdad.setForeground(new java.awt.Color(0, 0, 0));
         lbEdad.setText("Edad:");
 
         resultComboTipo.setBackground(new java.awt.Color(255, 255, 255));
         resultComboTipo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lbTramite.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbTramite.setForeground(new java.awt.Color(0, 0, 0));
         lbTramite.setText("Tramite:");
 
         lbTipo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbTipo.setForeground(new java.awt.Color(0, 0, 0));
         lbTipo.setText("Tipo:");
 
-        boxTramite.setForeground(new java.awt.Color(0, 0, 0));
         boxTramite.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Depositos", "Retiros", "Cambio de Divisas" }));
         boxTramite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,7 +249,7 @@ public class FormCliente extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -283,6 +275,7 @@ public class FormCliente extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FormCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
