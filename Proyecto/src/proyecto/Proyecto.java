@@ -35,14 +35,6 @@ public class Proyecto {
         loginUi.setVisible(true);
         iniciarAplicacion();
 
-        //Lista de ejemplo
-        //List<Nodo> clientes = new ArrayList<>();
-        //clientes.add(new Nodo("Juan Perez", "123", 30, "Depósitos", 'P'));
-        //clientes.add(new Nodo("Maria Lopez", "124", 25, "Retiros", 'A'));
-        // clientes.add(new Nodo("Carlos Sanchez", "125", 40, "Cambio de Divisas", 'B'));
-        //guardarCliente_archivo(clientes);
-        //Cargar Conf TXT
-        //File txt = new File("prod.txt");
     }
 
     private static void iniciarAplicacion() {

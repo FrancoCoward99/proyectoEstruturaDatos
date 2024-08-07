@@ -9,21 +9,26 @@ package proyecto;
  * @author Admin
  */
 public class Cola {
-    private Nodo cabeza, ultimo;
+    private Nodo cabeza , ultimo;
+    
     
     public Cola(){
         this.cabeza = null;
         this.ultimo = null;
     }
+      
+     public void encolar(Clientes cliente){
+         
+     }
    
     // Añadir un cliente al final de la cola
-    public void encolar(Nodo cliente) {
+    public void encolar(Nodo clientes) {
         if (ultimo == null) { // Si la cola está vacía
-            cabeza = cliente;
-            ultimo = cliente;
+            cabeza = clientes;
+            ultimo = clientes;
         } else {
-            ultimo.setSiguiente(cliente);
-            ultimo = cliente;
+            ultimo.setSiguiente(clientes);
+            ultimo = clientes;
         }
     }
     
@@ -40,8 +45,28 @@ public class Cola {
             return cliente;
         }
     }
+    public int obtenerPosicion(int ticket ) {
+        Nodo actual = cabeza;
+        int posicion = 0;
+        while (actual != null) {
+            if (actual.getDato().getTicket() == ticket) {
+                return posicion;
+            }
+            actual = actual.getSiguiente();
+            posicion++;
+        }
+        return -1; // No encontrado
+    }
     
     public Nodo verCabeza() {
         return cabeza;
     }
+
+    @Override
+    public String toString() {
+        return "Cola{" + "cabeza=" + cabeza + ", ultimo=" + ultimo + '}';
+    }
+    
+    
+    
 }

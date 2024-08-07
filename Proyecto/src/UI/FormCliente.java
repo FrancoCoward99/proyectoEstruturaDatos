@@ -221,9 +221,10 @@ public class FormCliente extends javax.swing.JFrame {
         String tramite = resultComboTramite.getText();
         String tipo =  resultComboTipo.getText();
         LocalDateTime horaCreacion = LocalDateTime.now();
+        int ticket = Integer.parseInt(spnEdad.getValue().toString());
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("prod.txt", true))) {
-            writer.write(nombre + "\t" + id + "\t" + "\t" + edad + "\t" + horaCreacion.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "\t" + tramite + "\t" + tipo);
+            writer.write(nombre + "\t" + id + "\t" + "\t" + edad + "\t" + horaCreacion.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "\t" + tramite + "\t" + tipo +"\t"+ticket);
             writer.newLine();
             JOptionPane.showMessageDialog(this, "Datos guardados correctamente.");
         } catch (IOException e) {
