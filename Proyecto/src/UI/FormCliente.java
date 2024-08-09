@@ -248,7 +248,9 @@ public class FormCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_boxTramiteActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.dispose();
+       this.dispose();// Cierra la ventana de Menu principal
+         MenuPrincipal menuPrincipalUI = new MenuPrincipal();
+          menuPrincipalUI.setVisible(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
     
     /**

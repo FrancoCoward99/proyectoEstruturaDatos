@@ -32,9 +32,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         JL_TituloMenu = new javax.swing.JLabel();
         JB_RegistrarCliente = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        JB_Reportes = new javax.swing.JButton();
         JB_AtencionPublico = new javax.swing.JButton();
         JTF_PreguntaMenu = new javax.swing.JTextField();
+        JB_Cerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,7 +54,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("jButton1");
+        JB_Reportes.setText("Reportes");
+        JB_Reportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_ReportesActionPerformed(evt);
+            }
+        });
 
         JB_AtencionPublico.setText("Atencion al Publico");
         JB_AtencionPublico.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +76,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        JB_Cerrar.setText("Cerrar");
+        JB_Cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_CerrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -79,17 +92,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(JL_TituloMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(21, 21, 21))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(JB_AtencionPublico, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                .addComponent(JB_RegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(246, 246, 246)
                 .addComponent(JTF_PreguntaMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JB_Cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(JB_AtencionPublico, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                        .addComponent(JB_RegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(96, 96, 96)
+                .addComponent(JB_Reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,10 +118,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(JTF_PreguntaMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JB_Reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JB_AtencionPublico, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JB_RegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(JB_Cerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -141,6 +161,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void JB_AtencionPublicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AtencionPublicoActionPerformed
         // TODO add your handling code here:
+        AtencionPubico atencionPublico = new AtencionPubico();
+        atencionPublico.setVisible(true);
+        this.dispose(); // Cierra la ventana de Menu principal
     }//GEN-LAST:event_JB_AtencionPublicoActionPerformed
 
     private void JTF_PreguntaMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_PreguntaMenuActionPerformed
@@ -155,6 +178,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.dispose(); // Cierra la ventana de Menu principal
     
     }//GEN-LAST:event_JB_RegistrarClienteActionPerformed
+
+    private void JB_ReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_ReportesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JB_ReportesActionPerformed
+
+    private void JB_CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CerrarActionPerformed
+        // TODO add your handling code here:
+         this.dispose(); 
+    }//GEN-LAST:event_JB_CerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,10 +226,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JB_AtencionPublico;
+    private javax.swing.JButton JB_Cerrar;
     private javax.swing.JButton JB_RegistrarCliente;
+    private javax.swing.JButton JB_Reportes;
     private javax.swing.JLabel JL_TituloMenu;
     private javax.swing.JTextField JTF_PreguntaMenu;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

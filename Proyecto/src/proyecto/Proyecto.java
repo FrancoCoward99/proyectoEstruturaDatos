@@ -4,6 +4,7 @@
  */
 package proyecto;
 
+import UI.AtencionPubico;
 import UI.FormCliente;
 import UI.Login;
 import UI.MenuPrincipal;
@@ -32,6 +33,7 @@ public class Proyecto {
         Login loginUi = new Login();
         MenuPrincipal menuPrincipalUI = new MenuPrincipal();
         FormCliente formClientesUI = new FormCliente();
+        AtencionPubico atencionPublico = new AtencionPubico();
         loginUi.setVisible(true);
         iniciarAplicacion();
 

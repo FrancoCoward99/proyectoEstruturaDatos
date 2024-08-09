@@ -137,9 +137,10 @@ public class AtencionPubico extends javax.swing.JFrame {
     private void JB_RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_RegresarActionPerformed
         // TODO add your handling code here:
 
-        FormCliente formcliente = new FormCliente();
-        formcliente.setVisible(true);
-        this.dispose(); // Cierra la ventana de Menu principal
+        
+        this.dispose();// Cierra la ventana de Menu principal
+         MenuPrincipal menuPrincipalUI = new MenuPrincipal();
+          menuPrincipalUI.setVisible(true);
 
     }//GEN-LAST:event_JB_RegresarActionPerformed
 
