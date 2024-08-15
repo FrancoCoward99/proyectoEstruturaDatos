@@ -25,15 +25,6 @@ public class Banco {
     private int cajaPreferencial = 1;
     private int cajaRapida = 1;
     
-    private ColaCajas colaCajas;
-
-    public Banco() {
-         this.colaCajas = new ColaCajas();
-    }
-    
-    
-    
-    
 
     public Banco(String nombreBanco, int cajaClientes) {
         this.nombreBanco = nombreBanco;
@@ -127,7 +118,5 @@ public class Banco {
     
 
     }
-    public ColaCajas getColaCajas() {
-        return colaCajas;
-    }
+
 }

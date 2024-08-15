@@ -1,15 +1,10 @@
-
 package UI;
-
 
 import javax.swing.JOptionPane;
 import proyecto.InfoSesion;
 
-
 public class Login extends javax.swing.JFrame {
 
-    
-    
     public Login() {
         initComponents();
     }
@@ -142,34 +137,40 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JPF_ContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JPF_ContraseniaActionPerformed
-        
+
     }//GEN-LAST:event_JPF_ContraseniaActionPerformed
 
     private void JTF_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_UsuarioActionPerformed
-        
+
     }//GEN-LAST:event_JTF_UsuarioActionPerformed
 
     private void JB_IniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_IniciarSesionActionPerformed
         String usuario = JTF_Usuario.getText();
         String contrasenia = JPF_Contrasenia.getText();
-        InfoSesion infoSesion = new InfoSesion("admin","admin");
-        
+        InfoSesion infoSesion = new InfoSesion("admin", "admin");
+        InfoSesion infoSesion2 = new InfoSesion("fcoward", "123");
+
         // Autenticar usuario
-    if (!infoSesion.autenticar(usuario, contrasenia)) {
-        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Saliendo del sistema...", "Error", JOptionPane.ERROR_MESSAGE);
-        System.exit(0);
-    } else {
-        JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.", "Información", JOptionPane.INFORMATION_MESSAGE);
-        // Aquí puedes abrir la ventana principal o realizar cualquier otra acción
-        abrirMenuPrincipal();
-    }   
+        boolean autenticado = infoSesion2.autenticar(usuario, contrasenia) || infoSesion.autenticar(usuario, contrasenia);
+
+        if (!autenticado) {
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. Saliendo del sistema...", "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+        } else {
+            JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            // Aquí puedes abrir la ventana principal o realizar cualquier otra acción
+            abrirMenuPrincipal();
+        }
+
     }//GEN-LAST:event_JB_IniciarSesionActionPerformed
-     //mETODO PARA ABRIR MENU PRINCIPAL
+    //mETODO PARA ABRIR MENU PRINCIPAL
+
     private void abrirMenuPrincipal() {
         MenuPrincipal menuPrincipal = new MenuPrincipal();
         menuPrincipal.setVisible(true);
         this.dispose(); // Cierra la ventana de login
     }
+
     /**
      * @param args the command line arguments
      */

@@ -1,10 +1,4 @@
-BAC CREDOMATIC
-4
-Isaac	1		22	2024-08-06T14:54:21.8292056	Depositos	A: Un solo trmite
-Isaac Ruiz	2		23	2024-08-07T12:23:56.9543771	Retiros	P: Preferencial
-Carlos	12		22	2024-08-07T12:24:11.7255007	Depositos	A: Un solo trmite
-Isaac Herrera	22		22	2024-08-07T12:31:47.5725142	Retiros	A: Un solo trmite
-Miguel Ramirez	21		18	2024-08-07T12:32:15.2809812	Depositos	B: Dos o mas trmites
-Isaac Ruiz	23		34	2024-08-07T12:41:43.344404	Retiros	A: Un solo trmite
-Isaac Tua	50		32	2024-08-07T12:47:16.6961641	Depositos	B: Dos o mas trmites
-isaac	12		25	2024-08-07T12:50:21.3925723	Retiros	A: Un solo trmite	25
+Solare
+5
+Franco 	11111		24	2024-08-14T18:39:21.2343265	Depositos	A: Un solo trmite	24
+Franco 	216519516		18	2024-08-14T18:58:50.5385968	Retiros	A: Un solo trmite	18
