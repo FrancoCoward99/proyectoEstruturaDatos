@@ -63,8 +63,21 @@ public Nodo extrae(Clientes pclientes) {
     
     return extraido;
 }
+  public int obtenerPosicionP(int ticket) {
+        Nodo actual = cabeza;
+        int posicion = 0;
 
+        while (actual != null) {
+            if (actual.getDato().getTicket() == ticket) {
+                return posicion;
+            }
+            actual = actual.getSiguiente();
+            posicion++;
+        }
+
+        return -1; // No encontrado
      
      
      
+}
 }

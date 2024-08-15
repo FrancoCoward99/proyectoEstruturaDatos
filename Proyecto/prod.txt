@@ -2,3 +2,4 @@ Solare
 5
 Franco 	11111		24	2024-08-14T18:39:21.2343265	Depositos	A: Un solo trmite	24
 Franco 	216519516		18	2024-08-14T18:58:50.5385968	Retiros	A: Un solo trmite	18
+Isaac	4444444	22	2024-08-14T22:03:32.9854274	Retiros	N	1	Caja Normal

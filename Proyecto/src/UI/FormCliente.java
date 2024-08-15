@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
+import proyecto.Clientes;
+import proyecto.SistemaTickets;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -53,7 +55,7 @@ public class FormCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        boxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "P: Preferencial", "A: Un solo trmite", "B: Dos o mas trmites" }));
+        boxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "P", "N", "R" }));
         boxTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxTipoActionPerformed(evt);
@@ -215,28 +217,50 @@ public class FormCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-       String nombre = txtNombre.getText();
+         String nombre = txtNombre.getText();
         String id = txtId.getText();
         int edad = Integer.parseInt(spnEdad.getValue().toString());
         String tramite = resultComboTramite.getText();
         String tipo =  resultComboTipo.getText();
         LocalDateTime horaCreacion = LocalDateTime.now();
-        int ticket = Integer.parseInt(spnEdad.getValue().toString());
+        // Obtener el siguiente número de ticket y guardarlo
+    int ticket = SistemaTickets.obtenerSiguienteTicket();
+    SistemaTickets.guardarTicketActual(); // Guardar el número de ticket actualizado
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("prod.txt", true))) {
-            writer.write(nombre + "\t" + id + "\t" + "\t" + edad + "\t" + horaCreacion.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "\t" + tramite + "\t" + tipo +"\t"+ticket);
-            writer.newLine();
-            JOptionPane.showMessageDialog(this, "Datos guardados correctamente.");
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + e.getMessage());
-        }
+    // Asignar la caja según el tipo
+    String caja;
+    switch (tipo) {
+        case "P":
+            caja = "Caja Preferencial";
+            break;
+        case "R":
+            caja = "Caja Rápida";
+            break;
+        case "N":
+            caja = "Caja Normal";
+            break;
+        default:
+            caja = "Caja No Especificada";
+            break;
+    }
+
+    // Crear el cliente con los datos
+    Clientes cliente = new Clientes(nombre, id, edad, horaCreacion, tramite, tipo.charAt(0), 0, ticket, caja);
+
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter("prod.txt", true))) {
+        writer.write(nombre + "\t" + id + "\t" + edad + "\t" + horaCreacion.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "\t" + tramite + "\t" + tipo + "\t" + ticket + "\t" + caja);
+        writer.newLine();
+        JOptionPane.showMessageDialog(this, "Datos guardados correctamente.");
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + e.getMessage());
+    }
+
         
     txtNombre.setText("");
     txtId.setText("");
     spnEdad.setValue(0);
     resultComboTramite.setText("");
     resultComboTipo.setText("");
-        
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
