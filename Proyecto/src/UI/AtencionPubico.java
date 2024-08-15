@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package UI;
-
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import javax.swing.Timer;
+import org.json.JSONObject;
 /**
  *
  * @author Isaac
@@ -15,8 +20,38 @@ public class AtencionPubico extends javax.swing.JFrame {
      */
     public AtencionPubico() {
         initComponents();
+        iniciarActualizacionTipoCambio();
     }
-
+    
+        private void iniciarActualizacionTipoCambio() {
+        // Configuramos un Timer para actualizar cada minuto
+        Timer timer = new Timer(60000, e -> actualizarTipoCambio());
+        timer.start();
+        
+        // Actualizamos de inmediato al iniciar
+        actualizarTipoCambio();
+    }
+    private void actualizarTipoCambio() {
+        try {
+            // Realizar la solicitud HTTP para obtener el tipo de cambio
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(new URI("https://api.exchangerate-api.com/v4/latest/USD"))
+                    .build();
+            
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            String json = response.body();
+            
+            JSONObject jsonObj = new JSONObject(json);
+            double tipoCambio = jsonObj.getJSONObject("rates").getDouble("CRC");
+            
+            // Actualizamos el JLabel con el tipo de cambio
+            lblTipoDeCambio.setText("Tipo de cambio: " + tipoCambio);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            lblTipoDeCambio.setText("Error al obtener tipo de cambio");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,6 +68,7 @@ public class AtencionPubico extends javax.swing.JFrame {
         JB_Rapida = new javax.swing.JButton();
         JTF_PreguntaMenu = new javax.swing.JTextField();
         JB_Normal1 = new javax.swing.JButton();
+        lblTipoDeCambio = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,14 +109,12 @@ public class AtencionPubico extends javax.swing.JFrame {
             }
         });
 
+        lblTipoDeCambio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(JL_TituloMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(21, 21, 21))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(246, 246, 246)
                 .addComponent(JTF_PreguntaMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -96,12 +130,20 @@ public class AtencionPubico extends javax.swing.JFrame {
                         .addGap(97, 97, 97)
                         .addComponent(JB_Preferencial, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(95, 95, 95))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(JL_TituloMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTipoDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(JL_TituloMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JL_TituloMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTipoDeCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(JTF_PreguntaMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
@@ -201,5 +243,6 @@ public class AtencionPubico extends javax.swing.JFrame {
     private javax.swing.JLabel JL_TituloMenu;
     private javax.swing.JTextField JTF_PreguntaMenu;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblTipoDeCambio;
     // End of variables declaration//GEN-END:variables
 }
