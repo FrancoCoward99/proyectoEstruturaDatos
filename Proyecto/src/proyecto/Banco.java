@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,11 +25,16 @@ public class Banco {
     una única para tramites rápidos no preferenciales*/
     private int cajaPreferencial = 1;
     private int cajaRapida = 1;
+    private boolean[] cajasDisponibles; //Para manejar la disponibilidad de las cajas
     
 
     public Banco(String nombreBanco, int cajaClientes) {
         this.nombreBanco = nombreBanco;
         this.cajaClientes = cajaClientes;
+        this.cajasDisponibles = new boolean[cajaClientes];  // Inicializa las cajas como disponibles
+        for (int i = 0; i < cajaClientes; i++){
+            cajasDisponibles[i] = true; // Todas las cajas están disponibles al inicio
+        }
     }
 
     public String getNombreBanco() {
@@ -111,12 +117,31 @@ public class Banco {
     }
     Banco configuracion = new Banco(nombreBanco, cajaClientes);
     configuracion.crearTxt();
-    return configuracion;
-    
-    
-    
-    
+    return configuracion; 
 
     }
+    
+    // Método para atender a un cliente en la caja
+    public void atenderCliente(Clientes cliente) {
+        // Buscar una caja disponible
+        for (int i = 0; i < cajaClientes; i++) {
+            if (cajasDisponibles[i]) {
+                cliente.setCaja("Caja " + (i + 1)); // Asigna la caja al cliente
+                cliente.setHoraAtencion(LocalDateTime.now()); // Actualiza la hora de atención
+                cajasDisponibles[i] = false; // Marca la caja como ocupada
+                System.out.println("Cliente " + cliente.getNombre() + " está siendo atendido en la " + cliente.getCaja());
+                break;
+            }
+        }
+    }
+
+    // Método para liberar una caja
+    public void liberarCaja(int numeroCaja) {
+        if (numeroCaja > 0 && numeroCaja <= cajaClientes) {
+            cajasDisponibles[numeroCaja - 1] = true;
+            System.out.println("La caja " + numeroCaja + " ahora está disponible.");
+        }
+    }
+    
 
 }
